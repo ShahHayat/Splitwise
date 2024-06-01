@@ -28,80 +28,8 @@
 - When settling a group, we should try to minimize the number of transactions that the group members should make to
   settle up.
 
-Note: All tests will be performed in one go. The application doesn't need to persist data between runs.
-
-### Input Format
-
-`Register mogambo 003 charlamagne`
-
-> u1 is registering with the username "mogambo", phone "003" and password as "charlamagne"
+`Note: All tests will be performed in one go. The application doesn't need to persist data between runs.`
 -- --
-`u1 UpdateProfile robinchwan`
-
-> u1 is updating their profile password to "robinchwan"
--- --
-`u1 AddGroup Roommates`
-
-> u1 is creating a group titled "Roommates"
--- --
-`u1 AddMember g1 u2`
-
-> u1 is adding u2 as a member of the group "Roommates" (which has the id g1)
--- --
-`u1 MyTotal`
-> u1 is asking to see the total amount they owe/recieve after everything is settled.
--- --
-`u1 History`
-> u1 is asking to see their history of transactions (whether added by themselves or someone
-else)
--- --
-`u1 Groups`
-> u1 is asking to see the groups that they're a member of
--- --
-`u1 SettleUp`
-> u1 is asking to see the list of transactions they should perform to settle up
--- --
-`u1 SettleUp g1`
-> u1 is asking to see the list of transactions that need to be performed by members of g1 to
-completely settle up the group.
--- --
-`u1 Expense g1 iPay 1000 Equal Desc Wifi Bill`
-> u1 is adding an expense in the group g1.
-> u1 paid 1000 Rs
-> each user of g1 owes an equal amount (the exact amount will depend on the number of users in group g1. Say g1 has 5
-users, then the amount owed by each will be 200Rs).
--- --
-`u1 Expense u2 u3 u4 iPay 1000 Equal Desc Last night dinner`
-> u1 is adding an expense with users u2, u3 and u4.
-> u1 paid 1000 Rs
-> each user owes an equal amount - 250Rs.
--- --
-`u1 Expense u2 u3 iPay 1000 Percent 20 30 50 Desc House rent`
-> u1 is adding an expense with users u2 and u3
-> u1 paid 1000 Rs
-> u1 owes 20% (200Rs), u2 owes 30% (300Rs) and u3 owes 50% (500Rs).
--- --
-`u1 Expense u2 u3 u4 iPay 1000 Ratio 1 2 3 4 Desc Goa trip`
-> u1 is adding an expense with users u2, u3 and u4.
-> u1 paid 1000 Rs
-> u1 owes 100Rs (1 part), u2 owes 200Rs (2 parts), u3 owes 300Rs (3 parts) and u4 owes 400Rs (4
-parts).
--- --
-`u1 Expense u2 u3 iPay 1000 Exact 100 300 600 Desc Groceries`
-> u1 is adding an expense with users u2 and u3.
-> u1 paid 1000 Rs
-> u1 owes 100Rs, u2 owes 300Rs and u3 owes 600Rs.
--- --
-`u1 Expense u2 u3 MultiPay 100 300 200 Equal Desc Lunch at office`
-> u1 is adding an expense with users u2 and u3.
-> u1 paid 100 Rs, u2 paid 300Rs and u3 paid 200Rs.
-> Each user owes an equal amount - 200Rs.
--- --
-`u1 Expense u2 u3 MultiPay 500 300 200 Percent 20 30 50 Desc Netflix subscription`
-> u1 is adding an expense with users u2 and u3.
-> u1 paid 500 Rs, u2 paid 300Rs and u3 paid 200Rs.
-> u1 owes 20% (200Rs), u2 owes 30% (300Rs) and u3 owes 50% (500Rs).
-
 ## Class diagrams
 
 What will be the major classes and their attributes?
@@ -157,7 +85,7 @@ classDiagram
 
 !!! Note
 The class diagram can be optimised further. Think about it.
-
+-- --
 ## Schema design
 
 What will be the tables and their columns?
@@ -240,3 +168,76 @@ erDiagram
     USERS ||--o{ GROUP_ADMINS : contains
     GROUPS ||--o{ EXPENSES : contains
 ```
+
+-- --
+### Input Format
+
+`Register mogambo 003 charlamagne`
+
+> u1 is registering with the username "mogambo", phone "003" and password as "charlamagne"
+-- --
+`u1 UpdateProfile robinchwan`
+
+> u1 is updating their profile password to "robinchwan"
+-- --
+`u1 AddGroup Roommates`
+
+> u1 is creating a group titled "Roommates"
+-- --
+`u1 AddMember g1 u2`
+
+> u1 is adding u2 as a member of the group "Roommates" (which has the id g1)
+-- --
+`u1 MyTotal`
+> u1 is asking to see the total amount they owe/recieve after everything is settled.
+-- --
+`u1 History`
+> u1 is asking to see their history of transactions (whether added by themselves or someone
+else)
+-- --
+`u1 Groups`
+> u1 is asking to see the groups that they're a member of
+-- --
+`u1 SettleUp`
+> u1 is asking to see the list of transactions they should perform to settle up
+-- --
+`u1 SettleUp g1`
+> u1 is asking to see the list of transactions that need to be performed by members of g1 to
+completely settle up the group.
+-- --
+`u1 Expense g1 iPay 1000 Equal Desc Wifi Bill`
+> u1 is adding an expense in the group g1.
+> u1 paid 1000 Rs
+> each user of g1 owes an equal amount (the exact amount will depend on the number of users in group g1. Say g1 has 5
+users, then the amount owed by each will be 200Rs).
+-- --
+`u1 Expense u2 u3 u4 iPay 1000 Equal Desc Last night dinner`
+> u1 is adding an expense with users u2, u3 and u4.
+> u1 paid 1000 Rs
+> each user owes an equal amount - 250Rs.
+-- --
+`u1 Expense u2 u3 iPay 1000 Percent 20 30 50 Desc House rent`
+> u1 is adding an expense with users u2 and u3
+> u1 paid 1000 Rs
+> u1 owes 20% (200Rs), u2 owes 30% (300Rs) and u3 owes 50% (500Rs).
+-- --
+`u1 Expense u2 u3 u4 iPay 1000 Ratio 1 2 3 4 Desc Goa trip`
+> u1 is adding an expense with users u2, u3 and u4.
+> u1 paid 1000 Rs
+> u1 owes 100Rs (1 part), u2 owes 200Rs (2 parts), u3 owes 300Rs (3 parts) and u4 owes 400Rs (4
+parts).
+-- --
+`u1 Expense u2 u3 iPay 1000 Exact 100 300 600 Desc Groceries`
+> u1 is adding an expense with users u2 and u3.
+> u1 paid 1000 Rs
+> u1 owes 100Rs, u2 owes 300Rs and u3 owes 600Rs.
+-- --
+`u1 Expense u2 u3 MultiPay 100 300 200 Equal Desc Lunch at office`
+> u1 is adding an expense with users u2 and u3.
+> u1 paid 100 Rs, u2 paid 300Rs and u3 paid 200Rs.
+> Each user owes an equal amount - 200Rs.
+-- --
+`u1 Expense u2 u3 MultiPay 500 300 200 Percent 20 30 50 Desc Netflix subscription`
+> u1 is adding an expense with users u2 and u3.
+> u1 paid 500 Rs, u2 paid 300Rs and u3 paid 200Rs.
+> u1 owes 20% (200Rs), u2 owes 30% (300Rs) and u3 owes 50% (500Rs).

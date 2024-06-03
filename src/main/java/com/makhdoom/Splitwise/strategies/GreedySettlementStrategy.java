@@ -5,9 +5,11 @@ import com.makhdoom.Splitwise.models.Expense;
 import com.makhdoom.Splitwise.models.User;
 import com.makhdoom.Splitwise.models.UserExpense;
 import org.springframework.data.util.Pair;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
+@Component
 public class GreedySettlementStrategy implements SettlementStrategy {
 
     private static Map<Long, Double> calculateNetBalances(List<Expense> expenses) {

@@ -20,6 +20,6 @@ public class UserExpense extends BaseModel {
 
     private Double amount;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated
     private ExpenseType type;
 }
